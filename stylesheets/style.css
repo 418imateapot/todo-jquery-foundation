@@ -1,0 +1,22 @@
+#display-tasks {
+	list-style: none;
+}
+
+#display-tasks div {
+	padding: 1em;
+	margin: 1ex;
+	border: 1px solid black;
+	background-color: #e7e7e7;
+}
+
+.delete-task {
+	height: 3ex;
+	width: 3ex;
+	color: #CCCCCC;
+	text-align: center;
+	line-height: 170%;
+	text-decoration: none;
+	background-color: #F6460C;
+	border-radius: 100%;
+}
+

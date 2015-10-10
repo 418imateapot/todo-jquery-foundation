@@ -52,6 +52,11 @@ var app = (function() {
         //TODO notify
     };
 
+	var deleteTask = function(id){
+		var elem = id.match(/[0-9]+/)[0];
+		tasks.splice(elem, 1);
+		saveTasks(tasks);
+	};
 
     var addTask = function(name, desc) {
         var item = {
@@ -67,21 +72,35 @@ var app = (function() {
     };
 
     var display = function(elementID) {
-        $(elementID).empty();
+        $(elementID).empty(); // pulisci la pagina
+		// per ogni entry costruisci l'html e attaccalo al DOM
         $.each(tasks, function(index, value) {
+			var newID = 'task' + index;
             var listItem = $('<li>', {
-                'id': 'task' + index,
+                'id': newID,
                 'class': 'task-item'
             });
+			var innerDiv = $('<div>'); 	//senza questo div il css mi va in vacca
 
-            $('<h3>', {
+			$('<a>', { 					// Il tasto cancella
+				'class': 'delete-task right',
+				'id': 'delete-task' + index,
+			}).append('&#10006;') 		// La crocetta figa
+			.click(function(e){
+				e.preventDefault();
+				deleteTask(newID);
+				display(elementID);
+			}).appendTo(innerDiv);
+
+            $('<h3>', { 				// il titolo
                 'text': value.name
-            }).appendTo(listItem);
-            $('<p>', {
+            }).appendTo(innerDiv);
+
+            $('<p>', {					// la descrizione
                 'text': value.desc
-            }).appendTo(listItem);
+            }).appendTo(innerDiv);
 
-
+			$(innerDiv).appendTo(listItem);
             $(listItem).appendTo(elementID);
         });
     };

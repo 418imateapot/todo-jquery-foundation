@@ -8,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo+jquery+foundation</title>
 
-    <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+    <!-- 3rd party css -->
     <link rel="stylesheet" href="bower_components/foundation/css/normalize.css">
     <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+    <!-- custom css -->
+    <link rel="stylesheet" href="stylesheets/style.css">
 
     <script src="bower_components/modernizr/modernizr.js"></script>
-
 </head>
 
 <body>
@@ -52,15 +53,19 @@
     <hr>
 
     <!-- display tasks -->
-    <ul id="display-tasks">
-    </ul>
+    <div class="row">
+        <ul class="small-block-grid-1 medium-block-grid-3" id="display-tasks">
+        </ul>
+    </div>
 
     <!-- Scripts -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/foundation/js/foundation.js"></script>
     <script src="js/app.js"></script>
 
-    <script> $(document).foundation(); </script>
+    <script>
+        $(document).foundation();
+    </script>
 
 </body>
 
